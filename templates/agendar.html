@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendamento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header><h1>🐾 Agendar Horário</h1><nav><a href="{{ url_for('index') }}">Voltar</a></nav></header>
+    <div class="container">
+        <h2>Novo Agendamento</h2>
+        <form method="POST">
+            <label>Data e Hora (24h):</label>
+            <input type="datetime-local" name="data_hora" required>
+            <label>Motivo:</label>
+            <input type="text" name="motivo" required>
+            <label>Tutor:</label>
+            <select name="id_tutor" required>
+                <option value="">Selecione...</option>
+                {% for t in tutores %}
+                <option value="{{ t.id }}">{{ t.nome }}</option>
+                {% endfor %}
+            </select>
+            <label>Pet:</label>
+            <select name="id_pet" required>
+                <option value="">Selecione...</option>
+                {% for p in pets %}
+                <option value="{{ p.id }}">{{ p.nome_pet }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Confirmar Agendamento</button>
+        </form>
+    </div>
+    {% if erro_horario %}
+    <script>alert("Atenção: Não é possível colidir horários! Já existe um atendimento agendado para este exato momento.");</script>
+    {% endif %}
+</body>
+</html>

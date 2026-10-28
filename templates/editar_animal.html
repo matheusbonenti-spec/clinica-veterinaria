@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>Editar Animal</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+    <header><h1>🐾 Editar Animal</h1><nav><a href="{{ url_for('listar_animais') }}">Voltar</a></nav></header>
+    <div class="container">
+        <h2>Atualizar Pet</h2>
+        <form method="POST">
+            <label>Nome do Pet:</label><input type="text" name="nome_pet" value="{{ animal.nome_pet }}" required>
+            <label>Espécie:</label><input type="text" name="especie" value="{{ animal.especie }}" required>
+            <label>Raça:</label><input type="text" name="raca" value="{{ animal.raca }}" required>
+            <label>Categoria:</label>
+            <select name="categoria" required>
+                <option value="Terrestre" {% if animal.categoria == 'Terrestre' %}selected{% endif %}>Terrestre</option>
+                <option value="Aéreo" {% if animal.categoria == 'Aéreo' %}selected{% endif %}>Aéreo</option>
+                <option value="Aquático" {% if animal.categoria == 'Aquático' %}selected{% endif %}>Aquático</option>
+                <option value="Anfíbio" {% if animal.categoria == 'Anfíbio' %}selected{% endif %}>Anfíbio</option>
+                <option value="Outro" {% if animal.categoria == 'Outro' %}selected{% endif %}>Outro</option>
+            </select>
+            <label>Tutor:</label>
+            <select name="id_tutor" required>
+                {% for t in tutores %}
+                <option value="{{ t.id }}" {% if t.id == animal.id_tutor %}selected{% endif %}>{{ t.nome }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+</body>
+</html>

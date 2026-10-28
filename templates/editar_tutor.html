@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>Editar Tutor</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+    <header><h1>🐾 Editar Tutor</h1><nav><a href="{{ url_for('listar_tutores') }}">Voltar</a></nav></header>
+    <div class="container">
+        <h2>Atualizar Tutor</h2>
+        <form method="POST">
+            <label>Nome:</label><input type="text" name="nome" value="{{ tutor.nome }}" required>
+            <label>Telefone:</label><input type="text" name="telefone" value="{{ tutor.telefone }}" required>
+            <label>Endereço:</label><input type="text" name="endereco" value="{{ tutor.endereco }}" required>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+</body>
+</html>

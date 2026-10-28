@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>Adicionar Usuário</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+    <header><h1>🐾 Adicionar Usuário</h1><nav><a href="{{ url_for('listar_usuarios') }}">Voltar</a></nav></header>
+    <div class="container">
+        <h2>Novo Usuário</h2>
+        <form method="POST">
+            <label>Nome:</label><input type="text" name="nome" required>
+            <label>E-mail:</label><input type="email" name="email" required>
+            <label>Senha:</label><input type="text" name="senha" required>
+            <button type="submit">Salvar Usuário</button>
+        </form>
+    </div>
+</body>
+</html>

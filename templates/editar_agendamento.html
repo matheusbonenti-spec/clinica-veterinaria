@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>Editar Agendamento</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+    <header><h1>🐾 Editar Agendamento</h1><nav><a href="{{ url_for('index') }}">Voltar</a></nav></header>
+    <div class="container">
+        <h2>Alterar Data/Hora ou Motivo</h2>
+        <form method="POST">
+            <label>Data e Hora:</label>
+            <input type="datetime-local" name="data_hora" value="{{ agendamento.data_hora.strftime('%Y-%m-%dT%H:%M') }}" required>
+            <label>Motivo:</label>
+            <input type="text" name="motivo" value="{{ agendamento.motivo }}" required>
+            <button type="submit">Atualizar Agendamento</button>
+        </form>
+    </div>
+    {% if erro_horario %}
+    <script>alert("Atenção: Não é possível colidir horários com outro agendamento existente!");</script>
+    {% endif %}
+</body>
+</html>

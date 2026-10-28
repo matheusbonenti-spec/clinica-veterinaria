@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>Gerenciar Usuários</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+    <header><h1>🐾 Gerenciar Usuários</h1><nav><a href="{{ url_for('cadastrar_usuario') }}">Adicionar Usuário</a><a href="{{ url_for('index') }}">Voltar</a></nav></header>
+    <div class="container" style="max-width: 900px;">
+        <h2>Usuários do Sistema</h2>
+        <table>
+            <tr><th>Nome</th><th>E-mail</th><th>Ações</th></tr>
+            {% for u in usuarios %}
+            <tr>
+                <td>{{ u.nome }}</td>
+                <td>{{ u.email }}</td>
+                <td>
+                    <a href="{{ url_for('editar_usuario', id=u.id) }}" style="background: #ffa726; color: white; padding: 5px 8px; text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Editar</a>
+                    <a href="{{ url_for('deletar_usuario', id=u.id) }}" onclick="return confirm('Tem certeza que deseja apagar?');" style="background: #e53935; color: white; padding: 5px 8px; text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Retirar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
